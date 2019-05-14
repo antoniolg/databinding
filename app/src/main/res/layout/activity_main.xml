@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="android.view.View" />
-        <variable name="visible" type="boolean" />
-        <variable name="infoMessage" type="String" />
-        <variable name="handlers" type="com.antonioleiva.databinding.MainActivity" />
+        <variable
+            name="viewmodel"
+            type="com.antonioleiva.databinding.MainViewModel" />
     </data>
 
     <LinearLayout
@@ -32,7 +31,7 @@
             android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="@{() -> handlers.onLoginClicked(user.getText().toString(), pass.getText().toString())}"
+            android:onClick="@{() -> viewmodel.onLoginClicked(user.getText().toString(), pass.getText().toString())}"
             android:text="@string/login" />
 
         <TextView
@@ -40,14 +39,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="16dp"
-            android:text="@{infoMessage}"
+            android:text="@{viewmodel.message}"
             tools:text="Message" />
 
         <ProgressBar
             android:id="@+id/progress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:visible="@{visible}"/>
+            app:visible="@{viewmodel.progressVisible}" />
 
     </LinearLayout>
 </layout>
